@@ -1,6 +1,31 @@
+<script setup>
+import { onBeforeUnmount, onMounted, ref } from 'vue';
+import { Application } from '@splinetool/runtime';
+
+const canvasRef = ref(null);
+let splineApp;
+
+onMounted(() => {
+  if (!canvasRef.value) {
+    return;
+  }
+
+  splineApp = new Application(canvasRef.value);
+  splineApp.load('https://prod.spline.design/1JSkxF9JkoqP6cQZ/scene.splinecode');
+});
+
+onBeforeUnmount(() => {
+  if (splineApp) {
+    splineApp.dispose();
+    splineApp = null;
+  }
+});
+</script>
+
 <template>
   <div class="robot">
-    <img src="/images/robot-flem.png" alt="Robot Flem Agence" />
+    <canvas ref="canvasRef" aria-label="Robot Flem Agence"></canvas>
+    <!-- <img src="/images/robot-flem.png" alt="Robot Flem Agence" /> -->
   </div>
 </template>
 
@@ -10,13 +35,14 @@
   right: 4%;
   bottom: 100px;
   width: 450px;
+  height: 450px;
   animation: float 6s ease-in-out infinite;
-  pointer-events: none;
 }
 
-.robot img {
+.robot canvas {
   width: 100%;
-  filter: drop-shadow(0 20px 40px rgba(0,0,0,.6));
+  height: 100%;
+  border: 0;
 }
 
 @keyframes float {
@@ -29,6 +55,7 @@
   .robot {
     position: static;
     margin: 40px auto 0;
+    max-width: 90vw;
   }
 }
 </style>
