@@ -203,7 +203,7 @@ onMounted(() => {
 .newsletter button {
   padding: 12px 18px;
   border-radius: 999px;
-  background: #d6b07a;
+  background: linear-gradient(135deg, #e0851e, #d5ab6f, #e0851e);
   border: none;
   cursor: pointer;
 }

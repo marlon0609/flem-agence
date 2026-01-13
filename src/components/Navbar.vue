@@ -1,48 +1,152 @@
-<template>
+﻿<template>
   <header class="navbar">
     <div class="container nav-inner">
 
-      <!-- LOGO (SANS GLASS) -->
-      <RouterLink to="/" class="logo">
+      <!-- LOGO -->
+      <RouterLink to="/" class="logo" @click="closeMobile">
         <img src="../assets/logo-flem-agence.png" alt="Flem Agence" />
       </RouterLink>
 
-      <!-- MENU (AVEC GLASS) -->
+      <!-- MENU DESKTOP -->
       <nav class="menu glass-menu">
-        <RouterLink to="/" class="nav-item">Accueil</RouterLink>
-        <RouterLink to="/agence" class="nav-item">Agence</RouterLink>
-        <RouterLink to="/studio" class="nav-item">Studio</RouterLink>
-        <RouterLink to="/services" class="nav-item">Services</RouterLink>
-        <RouterLink to="/cas-clients" class="nav-item">Cas Clients</RouterLink>
-        <RouterLink to="/process" class="nav-item">Méthode</RouterLink>
-        <RouterLink to="/contact" class="nav-item">Contact</RouterLink>
+        <RouterLink
+          v-for="item in navItems"
+          :key="item.to"
+          :to="item.to"
+          class="nav-item"
+        >
+          {{ item.label }}
+        </RouterLink>
       </nav>
 
-      <!-- CTA -->
-      <a
-        href="https://wa.me/22870799999?text=Bonjour%20Flem%20Agence,%20je%20souhaite%20réserver%20le%20studio."
-        target="_blank"
-        rel="noopener"
-        class="cta"
-      >
-        Réserver au Studio
-      </a>
+      <div class="nav-actions">
+        <!-- <div class="lang-switch" role="group" aria-label="Sélecteur de langue">
+          <button
+            type="button"
+            :class="['lang-btn', { active: lang === 'fr' }]"
+            @click="setLang('fr')"
+          >
+            FR
+          </button>
+          <button
+            type="button"
+            :class="['lang-btn', { active: lang === 'en' }]"
+            @click="setLang('en')"
+          >
+            EN
+          </button>
+        </div> -->
+
+        <!-- CTA -->
+        <a
+          href="https://wa.me/22870799999?text=Bonjour%20Flem%20Agence,%20je%20souhaite%20r%C3%A9server%20le%20studio."
+          target="_blank"
+          rel="noopener"
+          class="cta desktop-cta"
+        >
+          {{ ctaLabel }}
+        </a>
+
+        <!-- Burger -->
+        <button
+          class="burger"
+          type="button"
+          aria-label="Ouvrir le menu"
+          :aria-expanded="isOpen"
+          @click="isOpen = !isOpen"
+        >
+          <span></span><span></span><span></span>
+        </button>
+      </div>
 
     </div>
+
+    <!-- MOBILE MENU -->
+    <transition name="slide">
+      <div v-if="isOpen" class="mobile-menu">
+        <nav class="mobile-nav">
+          <RouterLink
+            v-for="item in navItems"
+            :key="item.to"
+            :to="item.to"
+            class="mobile-item"
+            @click="closeMobile"
+          >
+            {{ item.label }}
+          </RouterLink>
+        </nav>
+        <a
+          href="https://wa.me/22870799999?text=Bonjour%20Flem%20Agence,%20je%20souhaite%20r%C3%A9server%20le%20studio."
+          target="_blank"
+          rel="noopener"
+          class="mobile-cta"
+        >
+          {{ ctaLabel }}
+        </a>
+      </div>
+    </transition>
   </header>
 </template>
 
-
 <script setup>
 import { RouterLink } from "vue-router";
-
-import { onMounted } from "vue";
+import { computed, onMounted, ref } from "vue";
 import gsap from "gsap";
 
 let lastScroll = 0;
+const isOpen = ref(false);
+const lang = ref("fr");
+
+const labels = {
+  fr: {
+    cta: "Réserver au Studio",
+    items: [
+      { to: "/", label: "Accueil" },
+      { to: "/agence", label: "Agence" },
+      { to: "/studio", label: "Studio" },
+      { to: "/services", label: "Services" },
+      { to: "/cas-clients", label: "Cas Clients" },
+      { to: "/process", label: "Méthode" },
+      { to: "/contact", label: "Contact" },
+    ],
+  },
+  en: {
+    cta: "Book the Studio",
+    items: [
+      { to: "/", label: "Home" },
+      { to: "/agence", label: "Agency" },
+      { to: "/studio", label: "Studio" },
+      { to: "/services", label: "Services" },
+      { to: "/cas-clients", label: "Case Studies" },
+      { to: "/process", label: "Method" },
+      { to: "/contact", label: "Contact" },
+    ],
+  },
+};
+
+const navItems = computed(() => labels[lang.value].items);
+const ctaLabel = computed(() => labels[lang.value].cta);
+
+const setLang = (value) => {
+  lang.value = value;
+  localStorage.setItem("lang", value);
+  document.documentElement.lang = value;
+};
+
+const closeMobile = () => {
+  isOpen.value = false;
+};
 
 onMounted(() => {
-  // Apparition initiale
+  const saved = localStorage.getItem("lang");
+  if (saved === "fr" || saved === "en") {
+    setLang(saved);
+  } else if (navigator.language?.startsWith("en")) {
+    setLang("en");
+  } else {
+    setLang("fr");
+  }
+
   gsap.from(".navbar", {
     y: -30,
     opacity: 0,
@@ -50,19 +154,16 @@ onMounted(() => {
     ease: "power3.out",
   });
 
-  // Effet scroll (hide / show)
   window.addEventListener("scroll", () => {
     const current = window.scrollY;
 
     if (current > lastScroll && current > 120) {
-      // Scroll down → cacher
       gsap.to(".navbar", {
         y: -80,
         duration: 0.4,
         ease: "power2.out",
       });
     } else {
-      // Scroll up → afficher
       gsap.to(".navbar", {
         y: 0,
         duration: 0.4,
@@ -73,7 +174,6 @@ onMounted(() => {
     lastScroll = current;
   });
 });
-
 </script>
 
 <style scoped lang="scss">
@@ -81,26 +181,29 @@ onMounted(() => {
   position: sticky;
   top: 0;
   z-index: 1000;
-  height: 72px;
   background: rgba(5,5,5,.45);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid rgba(255,255,255,.06);
 }
 
 .nav-inner {
-  height: 100%;
+  height: 72px;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-/* LOGO — AUCUN GLASS */
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
 .logo img {
   height: 28px;
   display: block;
 }
 
-/* MENU GLASS */
 .glass-menu {
   display: flex;
   gap: 6px;
@@ -111,7 +214,6 @@ onMounted(() => {
   border: 1px solid rgba(255,255,255,.12);
 }
 
-/* ITEMS */
 .nav-item {
   position: relative;
   padding: 10px 18px;
@@ -125,13 +227,11 @@ onMounted(() => {
     box-shadow .25s ease;
 }
 
-/* Hover */
 .nav-item:hover {
   color: white;
   background: rgba(255,255,255,.08);
 }
 
-/* ACTIF (PAGE COURANTE) */
 .router-link-active {
   color: white;
   background: rgba(255,255,255,.14);
@@ -140,7 +240,6 @@ onMounted(() => {
     0 8px 30px rgba(0,0,0,.35);
 }
 
-/* Glow subtil */
 .router-link-active::after {
   content: "";
   position: absolute;
@@ -155,22 +254,121 @@ onMounted(() => {
   pointer-events: none;
 }
 
-/* CTA */
+.lang-switch {
+  display: inline-flex;
+  border-radius: 999px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,.15);
+  background: rgba(255,255,255,.06);
+}
+
+.lang-btn {
+  border: none;
+  background: transparent;
+  color: rgba(255,255,255,.75);
+  padding: 8px 10px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: background .2s ease, color .2s ease;
+}
+
+.lang-btn.active {
+  background: linear-gradient(135deg, #d6b07a, #e6c48a);
+  color: #1a1205;
+  font-weight: 700;
+}
+
 .cta {
-  background: linear-gradient(135deg, #d6b07a, #9c7a52);
+  background: linear-gradient(135deg, #e0851e, #d5ab6f, #e0851e);
   color: #111;
   padding: 10px 18px;
   border-radius: 999px;
   font-size: 13px;
-  font-weight: 500;
+  font-weight: 600;
   text-decoration: none;
 }
 
-/* RESPONSIVE */
-@media (max-width: 900px) {
+.burger {
+  display: none;
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,.14);
+  background: rgba(255,255,255,.06);
+  backdrop-filter: blur(10px);
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 6px;
+  cursor: pointer;
+  padding: 8px 10px;
+}
+
+.burger span {
+  width: 100%;
+  height: 2px;
+  background: #fff;
+  border-radius: 999px;
+}
+
+.slide-enter-active,
+.slide-leave-active {
+  transition: transform .25s ease, opacity .25s ease;
+}
+
+.slide-enter-from,
+.slide-leave-to {
+  transform: translateY(-10px);
+  opacity: 0;
+}
+
+.mobile-menu {
+  display: none;
+  background: rgba(5,5,5,.95);
+  border-bottom: 1px solid rgba(255,255,255,.08);
+  backdrop-filter: blur(12px);
+}
+
+.mobile-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 12px 16px;
+}
+
+.mobile-item {
+  color: rgba(255,255,255,.85);
+  text-decoration: none;
+  padding: 12px;
+  border-radius: 12px;
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.08);
+}
+
+.mobile-cta {
+  display: block;
+  margin: 0 16px 16px;
+  text-align: center;
+  background: linear-gradient(135deg, #e0851e, #d5ab6f, #e0851e);
+  color: #111;
+  padding: 12px;
+  border-radius: 12px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+@media (max-width: 1050px) {
   .glass-menu {
     display: none;
   }
+  .desktop-cta {
+    display: none;
+  }
+  .burger {
+    display: inline-flex;
+  }
+  .mobile-menu {
+    display: block;
+  }
 }
-
 </style>
