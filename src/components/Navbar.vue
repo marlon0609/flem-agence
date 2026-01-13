@@ -202,6 +202,10 @@ onMounted(() => {
 .logo img {
   height: 28px;
   display: block;
+  background: transparent;
+  border-radius: 0;
+  box-shadow: none;
+  clip-path: inset(4% round 4px);
 }
 
 .glass-menu {

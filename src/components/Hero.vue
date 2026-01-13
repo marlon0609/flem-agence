@@ -28,10 +28,13 @@
   display: flex;
   align-items: center;
   padding-top: 72px;
+  position: relative;
 }
 
 .inner {
   padding: 48px 0 32px;
+  position: relative;
+  z-index: 2;
 }
 
 h1 {
@@ -41,6 +44,7 @@ h1 {
   font-size: clamp(40px, 5.2vw, 72px);
   letter-spacing: -0.03em;
   max-width: 980px;
+  text-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
 }
 
 .subtitle {
@@ -49,6 +53,7 @@ h1 {
   font-size: 15px;
   line-height: 1.7;
   color: var(--muted);
+  text-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
 }
 
 .subtitle strong {
@@ -62,10 +67,4 @@ h1 {
   gap: 14px;
 }
 
-@media (max-width: 560px) {
-  .actions {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-}
 </style>

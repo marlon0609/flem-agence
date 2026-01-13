@@ -32,11 +32,13 @@ onBeforeUnmount(() => {
 <style scoped lang="scss">
 .robot {
   position: absolute;
-  right: 4%;
-  bottom: 100px;
-  width: 450px;
-  height: 450px;
+  right: clamp(-36px, 2vw, 4%);
+  bottom: clamp(20px, 10vw, 100px);
+  width: clamp(260px, 45vw, 450px);
+  height: clamp(260px, 45vw, 450px);
   animation: float 6s ease-in-out infinite;
+  z-index: 1;
+  pointer-events: none;
 }
 
 .robot canvas {
@@ -51,11 +53,4 @@ onBeforeUnmount(() => {
   100% { transform: translateY(0); }
 }
 
-@media (max-width: 900px) {
-  .robot {
-    position: static;
-    margin: 40px auto 0;
-    max-width: 90vw;
-  }
-}
 </style>
