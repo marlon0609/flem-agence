@@ -53,4 +53,12 @@ onBeforeUnmount(() => {
   100% { transform: translateY(0); }
 }
 
+@media (max-width: 720px) {
+  .robot {
+    right: -18%;
+    bottom: 6%;
+    width: clamp(220px, 62vw, 320px);
+    height: clamp(220px, 62vw, 320px);
+  }
+}
 </style>

@@ -67,4 +67,32 @@ h1 {
   gap: 14px;
 }
 
+@media (max-width: 720px) {
+  .hero {
+    min-height: 86vh;
+    padding-top: 88px;
+  }
+
+  .inner {
+    padding: 36px 0 28px;
+    max-width: 92vw;
+  }
+
+  h1 {
+    font-size: clamp(30px, 9.2vw, 44px);
+    line-height: 1.12;
+  }
+
+  h1 br {
+    display: none;
+  }
+
+  .subtitle {
+    font-size: 14px;
+  }
+
+  .actions {
+    flex-wrap: wrap;
+  }
+}
 </style>
