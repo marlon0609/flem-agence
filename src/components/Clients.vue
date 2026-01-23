@@ -4,7 +4,7 @@
 
       <h2>Nos références</h2>
       <p class="subtitle">
-        Des marques ambitieuses nous ont confié leur communication.
+        Des projets ambitieux | Une vision claire | Un accompagnement sur-mesure.
       </p>
 
       <div class="wall">

@@ -7,6 +7,6 @@ export default defineConfig({
   plugins: [vue()],
   server: {
     host: "127.0.0.1", // set to "0.0.0.0" to expose on LAN
-    port: 3000,
+    port: 5174,
   },
 });
