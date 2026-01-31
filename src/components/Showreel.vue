@@ -14,10 +14,11 @@
           playsinline
           preload="metadata"
           @click.prevent="togglePlay"
+          autoplay
           @play="isPlaying = true"
           @pause="isPlaying = false"
         >
-          <source src="https://makeagency.co.uk/wp-content/uploads/2025/01/MakeAgency_Showreel-2024_V2_1.mp4" type="video/mp4" />
+          <source src="/videos/flem-showreel.mp4" type="video/mp4" />
         </video>
 
         <!-- PLAY CENTRAL GEANT -->
