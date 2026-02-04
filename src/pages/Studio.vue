@@ -216,6 +216,32 @@ onMounted(() => {
         </p>
       </div>
     </section>
+
+    <!-- Map -->
+    <section class="studio-offers">
+      <div class="container">
+        <div class="offers-header">
+          <span class="badge subtle">Venez au Studio Flem</span>
+          <h2>Prêt à te rendre à notre Studio ?</h2>
+          <p>
+            Flem studio se trouve à Bè Gbenyedzi, sur le blvd Houphouet Boigny en face de la pharmacie Biova, 
+            <br> ou clinique Barruet… dans l’immeuble (orange) de Moov Akodessewa.
+          </p>
+        </div>
+
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3966.858463809139!2d1.2511920749897714!3d6.149702993837373!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zNsKwMDgnNTguOSJOIDHCsDE1JzEzLjYiRQ!5e0!3m2!1sfr!2stg!4v1770039517522!5m2!1sfr!2stg"
+          width="100%"
+          height="360"
+          style="border:0; border-radius: 18px; box-shadow: 0 20px 70px rgba(0,0,0,.25); background-color: #000;"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen="true"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Localisation Flem Agence"
+        ></iframe>
+      </div>
+    </section>
   </main>
 </template>
 

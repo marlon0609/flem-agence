@@ -1,7 +1,52 @@
 <script setup>
-import { onMounted } from "vue";
+import { onMounted, reactive, ref } from "vue";
 import gsap from "gsap";
 import Studio from "../components/Studio.vue";
+
+const form = reactive({
+  name: "",
+  email: "",
+  phone: "",
+  subject: "",
+  message: "",
+});
+
+const status = ref("idle");
+const statusMessage = ref("");
+const submitUrl =
+  "https://script.google.com/macros/s/AKfycby8QGz7RZ6Tp1xK1Y4pbZ6L672FjPWWZkVLFRdISm0ZzKZUuO_a-rSrBECrLpBM8m8j/exec";
+
+const handleSubmit = async () => {
+  if (status.value === "loading") {
+    return;
+  }
+
+  status.value = "loading";
+  statusMessage.value = "Envoi en cours...";
+
+  try {
+    const body = new URLSearchParams();
+    Object.entries(form).forEach(([key, value]) => {
+      body.append(key, value);
+    });
+
+    await fetch(submitUrl, {
+      method: "POST",
+      body,
+      mode: "no-cors",
+    });
+
+    status.value = "success";
+    statusMessage.value = "Merci ! Votre message a été envoyé.";
+    Object.keys(form).forEach((key) => {
+      form[key] = "";
+    });
+  } catch (error) {
+    status.value = "error";
+    statusMessage.value =
+      "Oups, impossible d'envoyer le message. Réessayez.";
+  }
+};
 
 onMounted(() => {
   gsap.from(".contact-hero .badge, .contact-hero h1, .contact-hero p, .contact-hero .cta-row", {
@@ -30,10 +75,10 @@ onMounted(() => {
       <div class="overlay"></div>
       <div class="container hero-content">
         <span class="badge">Show us what we're missing</span>
-        <h1>Surprenez-nous. Apportez ce qui fera la différence.</h1>
+        <h1>Contactez-nous pour un projet ou une collaboration !</h1>
         <p>
-          Data-driven, créatif·ve, technophile ou stratège ? Parlons-en. Que vous soyez monteur·se,
-          social media manager, graphiste ou créatif·ve dans l'âme, envoyez-nous ce que vous savez faire.
+          Vous avez une idée, un projet ou simplement envie d’échanger ? Notre équipe est à votre écoute pour
+          discuter de vos besoins et vous accompagner dans la réalisation de vos ambitions.
         </p>
         <div class="cta-row">
           <a class="cta primary" href="mailto:hello@flemagence.com">Email</a>
@@ -78,28 +123,71 @@ onMounted(() => {
           <h3>Envoyez-nous un message</h3>
           <p>Partagez vos besoins, votre budget, vos délais : nous revenons vers vous sous 24h ouvrées.</p>
         </div>
-        <form class="form-grid">
+        <form class="form-grid" @submit.prevent="handleSubmit">
           <div class="field">
             <label for="name">Nom complet</label>
-            <input id="name" name="name" type="text" placeholder="Votre nom" />
+            <input
+              id="name"
+              name="name"
+              type="text"
+              placeholder="Votre nom"
+              v-model="form.name"
+              required
+            />
           </div>
           <div class="field">
             <label for="email">Email</label>
-            <input id="email" name="email" type="email" placeholder="vous@email.com" />
+            <input
+              id="email"
+              name="email"
+              type="email"
+              placeholder="vous@email.com"
+              v-model="form.email"
+              required
+            />
           </div>
           <div class="field">
             <label for="phone">Téléphone</label>
-            <input id="phone" name="phone" type="tel" placeholder="+228 ..." />
+            <input
+              id="phone"
+              name="phone"
+              type="tel"
+              placeholder="+228 ..."
+              v-model="form.phone"
+            />
           </div>
           <div class="field">
             <label for="subject">Sujet</label>
-            <input id="subject" name="subject" type="text" placeholder="Objet de votre demande" />
+            <input
+              id="subject"
+              name="subject"
+              type="text"
+              placeholder="Objet de votre demande"
+              v-model="form.subject"
+              required
+            />
           </div>
           <div class="field full">
             <label for="message">Message</label>
-            <textarea id="message" name="message" rows="4" placeholder="Décrivez votre projet, vos objectifs, vos délais..."></textarea>
+            <textarea
+              id="message"
+              name="message"
+              rows="4"
+              placeholder="Décrivez votre projet, vos objectifs, vos délais..."
+              v-model="form.message"
+              required
+            ></textarea>
           </div>
-          <button type="submit" class="cta primary submit-btn">Envoyer</button>
+          <button
+            type="submit"
+            class="cta primary submit-btn"
+            :disabled="status === 'loading'"
+          >
+            {{ status === "loading" ? "Envoi..." : "Envoyer" }}
+          </button>
+          <p v-if="statusMessage" class="form-status" :data-state="status" aria-live="polite">
+            {{ statusMessage }}
+          </p>
         </form>
       </div>
     </section>
@@ -107,6 +195,32 @@ onMounted(() => {
     <!-- STUDIO COMPONENT -->
     <section class="section studio-slot">
       <Studio />
+    </section>
+
+    <!-- Map -->
+    <section class="studio-offers">
+      <div class="container">
+        <div class="offers-header">
+          <span class="badge subtle">Venez au Studio Flem</span>
+          <h2>Prêt à te rendre à notre Studio ?</h2>
+          <p>
+            Flem studio se trouve à Bè Gbenyedzi, sur le blvd Houphouet Boigny en face de la pharmacie Biova, 
+            <br> ou clinique Barruet… dans l’immeuble (orange) de Moov Akodessewa.
+          </p>
+        </div>
+
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3966.858463809139!2d1.2511920749897714!3d6.149702993837373!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zNsKwMDgnNTguOSJOIDHCsDE1JzEzLjYiRQ!5e0!3m2!1sfr!2stg!4v1770039517522!5m2!1sfr!2stg"
+          width="100%"
+          height="360"
+          style="border:0; border-radius: 18px; box-shadow: 0 20px 70px rgba(0,0,0,.25); background-color: #000;"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen="true"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Localisation Flem Agence"
+        ></iframe>
+      </div>
     </section>
   </main>
 </template>
@@ -131,9 +245,11 @@ onMounted(() => {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(70% 60% at 20% 0%, rgba(214,176,122,.2), transparent 65%),
     radial-gradient(50% 40% at 80% 20%, rgba(214,176,122,.08), transparent 70%),
-    linear-gradient(180deg, rgba(0,0,0,.75), #050505 70%);
+    linear-gradient(180deg, rgba(0,0,0,.75), #050505 70%),
+    url('/images/statement-bg.jpeg') no-repeat center/cover;
+  filter: saturate(0.8) brightness(0.9);
+  z-index: 0;
 }
 
 .hero-content {

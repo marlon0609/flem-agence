@@ -51,6 +51,27 @@ const projects = [
     image: "/images/esther-boua-consulting-cover.png",
     description:
       "Refonte de la présence digitale d’un cabinet de conseil, avec une approche premium axée sur la crédibilité, l’expertise et la confiance."
+  },
+  {
+    title: "Phillipe Fabignon | Les Funéreilles Des Tabou",
+    category: "TV Show & YouTube Channel Launch",
+    image: "/images/lfdt-philippe-fabignon-cover.jpg",
+    description:
+      "Création et lancement d’une émission de télévision et d’une chaîne YouTube dédiées à la démystification des tabous autour de la mort et du deuil en Afrique."
+  },
+  {
+    title: "Selly Doridot | Immopreneurs",
+    category: "Investissement Immobilier",
+    image: "/images/selly-doridot-immopreneurs-cover.jpg",
+    description:
+      "société de conseils, de formation et d’accompagnement en investissement immobilier rentable qui a pour mission d’aider les personnes à atteindre l’indépendance financière."
+  },
+  {
+    title: "Chimène Nana | Business & Réussite",
+    category: "Coaching & Développement Personnel",
+    image: "/images/business-&-reussite-chimene-nana-cover.jpg",
+    description:
+      "Investir sereinement pour sécuriser tes vieux jours ! Tout ce dont tu as besoin en tant que résilient pour devenir libre et autonome financièrement"
   }
 ];
 </script>
