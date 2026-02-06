@@ -6,30 +6,72 @@
 
     <!-- Scroll horizontal -->
     <div class="scroll-wrap">
-      <div class="scroll-track">
+      <button
+        class="control-btn left"
+        type="button"
+        aria-label="Défiler vers la gauche"
+        @click="rewind()"
+        @mouseenter="pauseMarquee(true)"
+        @mouseleave="pauseMarquee(false)"
+      >
+        ←
+      </button>
+      <button
+        class="control-btn right"
+        type="button"
+        aria-label="Défiler vers la droite"
+        @click="boostForward()"
+        @mouseenter="pauseMarquee(true)"
+        @mouseleave="pauseMarquee(false)"
+      >
+        →
+      </button>
+      <div
+        class="marquee"
+        :style="{ '--marquee-direction': direction }"
+        :class="{ 'is-boost': isBoosting }"
+        :data-paused="isPaused ? 'true' : 'false'"
+      >
+        <div class="scroll-track">
+          <article
+            v-for="project in projects"
+            :key="`a-${project.title}`"
+            class="project-card">
+            <div class="image">
+              <img :src="project.image" :alt="project.title" />
+            </div>
 
-        <article
-          v-for="(project, i) in projects"
-          :key="i"
-          class="project-card"
-        >
-          <div class="image">
-            <img :src="project.image" :alt="project.title" />
-          </div>
+            <div class="meta">
+              <span>{{ project.category }}</span>
+              <h4>{{ project.title }}</h4>
+              <p>{{ project.description }}</p>
+            </div>
+          </article>
+        </div>
+        <div class="scroll-track" aria-hidden="true">
+          <article
+            v-for="project in projects"
+            :key="`b-${project.title}`"
+            class="project-card">
+            <div class="image">
+              <img :src="project.image" :alt="project.title" />
+            </div>
 
-          <div class="meta">
-            <span>{{ project.category }}</span>
-            <h4>{{ project.title }}</h4>
-            <p>{{ project.description }}</p>
-          </div>
-        </article>
-
+            <div class="meta">
+              <span>{{ project.category }}</span>
+              <h4>{{ project.title }}</h4>
+              <p>{{ project.description }}</p>
+            </div>
+          </article>
+        </div>
       </div>
     </div>
   </section>
 </template>
 
 <script setup>
+import { ref } from "vue";
+
 const projects = [
   {
     title: "Nabou Fall Akademy",
@@ -74,6 +116,37 @@ const projects = [
       "Investir sereinement pour sécuriser tes vieux jours ! Tout ce dont tu as besoin en tant que résilient pour devenir libre et autonome financièrement"
   }
 ];
+
+const direction = ref("normal");
+const isPaused = ref(false);
+const isBoosting = ref(false);
+let boostTimer;
+
+const setDirection = (value) => {
+  direction.value = value;
+};
+
+const pauseMarquee = (value) => {
+  isPaused.value = value;
+};
+
+const boost = () => {
+  isBoosting.value = true;
+  window.clearTimeout(boostTimer);
+  boostTimer = window.setTimeout(() => {
+    isBoosting.value = false;
+  }, 900);
+};
+
+const boostForward = () => {
+  setDirection("normal");
+  boost();
+};
+
+const rewind = () => {
+  setDirection("reverse");
+  boost();
+};
 </script>
 
 <style scoped lang="scss">
@@ -83,24 +156,86 @@ const projects = [
 
 .header h3 {
   font-size: clamp(20px, 2.4vw, 26px);
-  font-weight: 500;
+  font-weight: 700;
   letter-spacing: -0.02em;
   max-width: 620px;
   margin-bottom: 32px;
 }
 
+.header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.control-btn {
+  width: 42px;
+  height: 42px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.15);
+  background: rgba(255,255,255,.05);
+  color: #fff;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1;
+  transition: transform .2s ease, background .2s ease, border-color .2s ease;
+  position: absolute;
+  top: 70%;
+  transform: translateY(-50%);
+  z-index: 2;
+}
+
+.control-btn:hover {
+  transform: translateY(-50%) translateY(-2px);
+  background: rgba(255,255,255,.12);
+  border-color: rgba(255,255,255,.35);
+}
+
+.control-btn.left,
+.control-btn.right {
+  top: 70%;
+}
+
+.control-btn.left {
+  left: 60px;
+}
+
+.control-btn.right {
+  right: 60px;
+}
+
 .scroll-wrap {
-  overflow-x: auto;
-  padding-left: max(6vw, calc((100vw - 1180px) / 2));
+  overflow: hidden;
   scrollbar-width: none;
+  mask-image: linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
+  position: relative;
 }
 .scroll-wrap::-webkit-scrollbar {
   display: none;
 }
 
+.marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 120s linear infinite;
+  animation-direction: var(--marquee-direction, normal);
+  padding: 0 max(6vw, calc((100vw - 1180px) / 2));
+}
+
+.marquee[data-paused="true"] {
+  animation-play-state: paused;
+}
+
+.marquee.is-boost {
+  animation-duration: 35s;
+}
+
 .scroll-track {
   display: flex;
   gap: 24px;
+  width: max-content;
 }
 
 .project-card {
@@ -181,5 +316,28 @@ const projects = [
   .project-card {
     flex: 0 0 300px;
   }
+
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0;
+  }
+
+  .control-btn.left,
+  .control-btn.right {
+    top: auto;
+    bottom: -16px;
+    transform: none;
+  }
 }
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
 </style>

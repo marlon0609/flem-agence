@@ -94,7 +94,7 @@
 
 .services-header h2 {
   font-size: clamp(30px, 3.6vw, 44px);
-  font-weight: 500;
+  font-weight: 700;
   letter-spacing: -0.025em;
   margin-bottom: 20px;
 }
@@ -119,7 +119,7 @@
     linear-gradient(180deg, #0f0f12, #0b0b0d);
   border-radius: 24px;
   padding: 40px 34px 42px;
-  border: 1px solid rgba(255,255,255,.08);
+  border: 1px solid #e3a74e;
   overflow: hidden;
   transition: transform .45s ease, box-shadow .45s ease;
 }
@@ -130,9 +130,9 @@
   top: 22px;
   right: 26px;
   font-size: 46px;
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: -0.04em;
-  color: rgba(255,255,255,.04);
+  color: #e3a74e;
   pointer-events: none;
 }
 
@@ -161,7 +161,7 @@
 /* TITRE */
 .service-card h3 {
   font-size: 17px;
-  font-weight: 500;
+  font-weight: 700;
   margin-bottom: 16px;
   max-width: 220px;
 }

@@ -66,7 +66,7 @@
   font-size: 11px;
   letter-spacing: 0.35em;
   text-transform: uppercase;
-  color: rgba(214,176,122,.9);
+  color: #e3a74e;
   margin-bottom: 34px;
 }
 
@@ -86,7 +86,7 @@ h2 {
   height: 2px;
   background: linear-gradient(
     90deg,
-    rgba(214,176,122,.65),
+    rgba(251, 170, 50, 0.829),
     rgba(255,255,255,.12)
   );
   opacity: .55;

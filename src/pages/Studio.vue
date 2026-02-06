@@ -247,7 +247,7 @@ onMounted(() => {
 
 <style scoped lang="scss">
 :root {
-  --gold: #d6b07a;
+  --gold: #e3a74e;
   --card: #0f0f12;
   --muted: rgba(255,255,255,.72);
 }
@@ -425,8 +425,8 @@ onMounted(() => {
 }
 
 .feature-card.highlight {
-  border-color: rgba(214,176,122,.6);
-  box-shadow: 0 18px 65px rgba(214,176,122,.12);
+  border-color: #e3a74e;
+  box-shadow: 0 18px 65px rgba(227,167,78,.12);
 }
 
 .feature-card h4 {

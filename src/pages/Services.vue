@@ -1,6 +1,7 @@
 <script setup>
 import { onMounted } from "vue";
 import gsap from "gsap";
+import Studio from "../components/Studio.vue";
 
 onMounted(() => {
   gsap.from(".services-hero .badge, .services-hero h1, .services-hero p, .services-hero .hero-cta", {
@@ -117,46 +118,7 @@ onMounted(() => {
       </div>
     </section>
 
-    <!-- STUDIO CTA -->
-    <section class="section studio-cta">
-      <div class="container studio-card">
-        <div class="studio-copy">
-          <div class="icon-row" aria-hidden="true">
-            <div class="studio-icons" aria-hidden="true">
-              <span class="icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M12 3a3 3 0 0 0-3 3v5a3 3 0 0 0 6 0V6a3 3 0 0 0-3-3Z" />
-                  <path d="M8 11v1a4 4 0 0 0 8 0v-1" />
-                  <path d="M12 18v3" />
-                </svg>
-              </span>
-              <span class="icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                  <rect x="3" y="7" width="13" height="10" rx="2" />
-                  <path d="M16 10.5 21 8v8l-5-2.5" />
-                </svg>
-              </span>
-              <span class="icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                  <rect x="3" y="6" width="18" height="14" rx="2" />
-                  <circle cx="12" cy="13" r="3.5" />
-                  <path d="M7.5 3.5h3L12 6" />
-                </svg>
-              </span>
-            </div>
-          </div>
-          <h2>Notre Studio de Création</h2>
-          <p>
-            Un espace dédié à la production de contenus haut de gamme. Podcasts, vidéos, shootings :
-            donnez vie à vos idées avec notre équipement de pointe et l'accompagnement de notre équipe.
-          </p>
-          <a href="/studio" class="hero-cta">Découvrir le Studio</a>
-        </div>
-        <div class="studio-visual">
-          <img src="/images/flem-studio.jpeg" alt="Studio Flem Agence" />
-        </div>
-      </div>
-    </section>
+    <Studio />
 
     <!-- CLOSING CTA -->
     <section class="section closing">
@@ -179,7 +141,7 @@ onMounted(() => {
 
 <style scoped lang="scss">
 :root {
-  --gold: #d6b07a;
+  --gold: #e3a74e;
   --bg-deep: #060607;
 }
 
@@ -376,7 +338,7 @@ onMounted(() => {
 
 .capability-card:hover .cap-list li::before {
   transform: skew(0deg);
-  color: #f4d6a0;
+  color: #e3a74e;
 }
 
 .studio-cta {
@@ -483,8 +445,8 @@ onMounted(() => {
   width: 44px;
   height: 44px;
   border-radius: 12px;
-  background: rgba(214,176,122,.14);
-  color: #d6b07a;
+  background: rgba(227,167,78,.14);
+  color: #e3a74e;
   display: grid;
   place-items: center;
   transition: background .25s ease, color .25s ease, box-shadow .25s ease;
@@ -493,7 +455,7 @@ onMounted(() => {
 .studio-icons .icon:hover {
   background: linear-gradient(135deg, #e0851e, #d5ab6f, #e0851e);
   color: #0b0b0c;
-  box-shadow: 0 10px 28px rgba(214,176,122,.35);
+  box-shadow: 0 10px 28px rgba(227,167,78,.35);
 }
 
 @media (max-width: 1024px) {

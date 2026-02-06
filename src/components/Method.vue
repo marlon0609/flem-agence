@@ -67,7 +67,7 @@
 
 .method-header h2 {
   font-size: clamp(30px, 3.6vw, 44px);
-  font-weight: 500;
+  font-weight: 700;
   letter-spacing: -0.03em;
   margin-bottom: 22px;
 }
@@ -81,7 +81,7 @@
 /* TIMELINE */
 .timeline {
   position: relative;
-  max-width: 900px;
+  max-width: 1000px;
   margin: 0 auto;
 }
 
@@ -96,7 +96,7 @@
   background: linear-gradient(
     to bottom,
     transparent,
-    rgba(214,176,122,.4),
+    #e3a74e,
     transparent
   );
   transform: translateX(-50%);
@@ -128,7 +128,7 @@
   font-size: 64px;
   font-weight: 500;
   letter-spacing: -0.04em;
-  color: rgba(255,255,255,.06);
+  color: #e3a74e;
   top: -18px;
   pointer-events: none;
 }
@@ -140,8 +140,8 @@
 
 .content h3 {
   font-size: 18px;
-  font-weight: 500;
-  margin-bottom: 14px;
+  font-weight: 700;
+  margin-bottom: 16px;
 }
 
 .content p {

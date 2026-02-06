@@ -15,10 +15,11 @@
           preload="metadata"
           @click.prevent="togglePlay"
           autoplay
+          loop
           @play="isPlaying = true"
           @pause="isPlaying = false"
         >
-          <source src="/videos/flem-showreel.mp4" type="video/mp4" />
+          <source src="https://flemagence.com/flem-showreel.mp4?inline=true" type="video/mp4" />
         </video>
 
         <!-- PLAY CENTRAL GEANT -->

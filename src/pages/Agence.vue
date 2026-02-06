@@ -4,7 +4,7 @@
         <section class="section results" ref="resultsRef">
             <div class="container results-inner">
                 <p class="kicker">et les résultats</p>
-                <h2>Plus de 7 années à transformer des idées en résultats</h2>
+                <h2>Plus de 7 années à transformer <br> Des idées en résultats</h2>
                 <p class="lead">
                     Depuis plus de sept ans, nous accompagnons des marques, entrepreneurs et personnalités
                     publiques dans la construction et le rayonnement de leur communication, avec des résultats
@@ -124,13 +124,13 @@ onBeforeUnmount(() => {
 .results h2 {
     margin: 0 0 16px;
     font-size: clamp(26px, 4vw, 44px);
-    font-weight: 500;
+    font-weight: 700;
     letter-spacing: -0.02em;
 }
 
 .lead {
     color: rgba(255,255,255,.7);
-    font-size: 15px;
+    font-size: 16px;
     line-height: 1.7;
     margin: 0 auto 40px;
     max-width: 720px;

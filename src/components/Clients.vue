@@ -60,6 +60,8 @@ const logos = [
 h2 {
   text-align: center;
   margin-bottom: 8px;
+  font-weight: 700;
+  font-size: 30px;
 }
 
 .subtitle {

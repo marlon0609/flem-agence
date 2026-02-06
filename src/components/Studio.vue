@@ -89,8 +89,8 @@
   width: 44px;
   height: 44px;
   border-radius: 12px;
-  background: rgba(214,176,122,.14);
-  color: #d6b07a;
+  background: rgba(227,167,78,.14);
+  color: #e3a74e;
   display: grid;
   place-items: center;
   transition: background .25s ease, color .25s ease, box-shadow .25s ease;
@@ -99,7 +99,7 @@
 .studio-icons .icon:hover {
   background: linear-gradient(135deg, #e0851e, #d5ab6f, #e0851e);
   color: #0b0b0c;
-  box-shadow: 0 10px 28px rgba(214,176,122,.35);
+  box-shadow: 0 10px 28px rgba(227,167,78,.35);
 }
 
 .studio-text h2 {
