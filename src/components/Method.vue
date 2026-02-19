@@ -152,6 +152,10 @@
 
 /* RESPONSIVE */
 @media (max-width: 900px) {
+  .method {
+    padding: 90px 0;
+  }
+
   .timeline::before {
     left: 16px;
   }
@@ -167,6 +171,18 @@
     left: 16px;
     transform: none;
     font-size: 40px;
+  }
+}
+
+@media (max-width: 600px) {
+  .method-header {
+    margin-bottom: 60px;
+  }
+  .timeline-step {
+    margin-bottom: 70px;
+  }
+  .content {
+    max-width: 100%;
   }
 }
 </style>

@@ -182,12 +182,30 @@
 }
 
 @media (max-width: 700px) {
+  .services {
+    padding-top: 80px;
+  }
+  .services-header {
+    margin-bottom: 50px;
+  }
   .services-grid {
     grid-template-columns: 1fr;
   }
 
   .index {
     font-size: 36px;
+  }
+
+  .service-card {
+    padding: 30px 26px 32px;
+  }
+
+  .service-card h3 {
+    font-size: 16px;
+  }
+
+  .service-card p {
+    font-size: 13px;
   }
 }
 </style>

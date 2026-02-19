@@ -186,4 +186,24 @@
     grid-template-columns: 1fr;
   }
 }
+
+@media (max-width: 640px) {
+  .strengths {
+    padding-top: 70px;
+  }
+  .strengths-header {
+    margin-bottom: 40px;
+  }
+  .strength-card {
+    padding: 28px 24px 30px;
+  }
+  .icon {
+    width: 52px;
+    height: 52px;
+  }
+  .icon img {
+    width: 42px;
+    height: 42px;
+  }
+}
 </style>

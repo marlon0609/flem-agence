@@ -510,6 +510,17 @@ onBeforeUnmount(() => {
   .cases-hero {
     padding: 110px 0 80px;
   }
+  .cases-hero h1 {
+    font-size: clamp(28px, 7.4vw, 40px);
+  }
+  .filters {
+    overflow-x: auto;
+    white-space: nowrap;
+    padding-bottom: 6px;
+  }
+  .filter {
+    flex: 0 0 auto;
+  }
 
   .grid {
     grid-template-columns: 1fr;

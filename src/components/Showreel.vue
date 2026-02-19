@@ -300,4 +300,34 @@ onBeforeUnmount(() => {
     height: 44vh;
   }
 }
+
+@media (max-width: 600px) {
+  .showreel {
+    padding: 0 0 50px;
+  }
+  .vid {
+    height: 38vh;
+  }
+  .big-play {
+    width: 72px;
+    height: 72px;
+  }
+  .ctrl {
+    width: 36px;
+    height: 36px;
+    top: 12px;
+  }
+  .play { left: 12px; }
+  .vol  { right: 12px; }
+  .progress {
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+    gap: 8px;
+  }
+  .dot {
+    width: 8px;
+    height: 8px;
+  }
+}
 </style>

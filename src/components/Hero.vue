@@ -69,8 +69,8 @@ h1 {
 
 @media (max-width: 720px) {
   .hero {
-    min-height: 86vh;
-    padding-top: 88px;
+    min-height: 82vh;
+    padding-top: 96px;
   }
 
   .inner {
@@ -89,6 +89,7 @@ h1 {
 
   .subtitle {
     font-size: 14px;
+    max-width: 88vw;
   }
 
   .actions {

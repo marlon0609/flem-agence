@@ -468,7 +468,28 @@ onMounted(() => {
 
 @media (max-width: 720px) {
   .services-hero {
-    padding: 120px 0 100px;
+    padding: 110px 0 90px;
+    min-height: auto;
+    text-align: center;
+  }
+  .services-hero h1 {
+    font-size: clamp(28px, 7.4vw, 40px);
+  }
+  .services-hero p br {
+    display: none;
+  }
+  .hero-content {
+    margin-left: 0;
+    align-items: center;
+    padding: 28px 0 12px;
+  }
+  .badge {
+    font-size: 10px;
+    padding: 6px 12px;
+  }
+  .hero-cta {
+    width: 100%;
+    max-width: 260px;
   }
   .capability-card {
     padding: 22px;

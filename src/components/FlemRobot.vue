@@ -55,10 +55,11 @@ onBeforeUnmount(() => {
 
 @media (max-width: 720px) {
   .robot {
-    right: -18%;
-    bottom: 6%;
+    right: -24%;
+    bottom: 2%;
     width: clamp(220px, 62vw, 320px);
     height: clamp(220px, 62vw, 320px);
+    opacity: 0.95;
   }
 }
 </style>

@@ -314,7 +314,7 @@ const rewind = () => {
 
 @media (max-width: 600px) {
   .project-card {
-    flex: 0 0 300px;
+    flex: 0 0 290px;
   }
 
   .header {
@@ -328,6 +328,17 @@ const rewind = () => {
     top: auto;
     bottom: -16px;
     transform: none;
+    width: 40px;
+    height: 40px;
+  }
+}
+
+@media (max-width: 420px) {
+  .project-card {
+    flex: 0 0 260px;
+  }
+  .image {
+    height: 280px;
   }
 }
 

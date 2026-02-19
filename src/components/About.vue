@@ -80,7 +80,7 @@ onBeforeUnmount(() => {
 }
 
 .left h1 {
-  font-size: clamp(58px, 3.2vw, 40px);
+  font-size: clamp(36px, 4.2vw, 58px);
   font-weight: 700;
   line-height: 1.2;
   letter-spacing: -0.02em;
@@ -170,6 +170,10 @@ onBeforeUnmount(() => {
     order: 2;
   }
 
+  .left h1 br {
+    display: none;
+  }
+
   .gallery-tunnel {
     height: 340px;
   }
@@ -178,6 +182,9 @@ onBeforeUnmount(() => {
 @media (max-width: 640px) {
   .gallery-tunnel {
     height: 300px;
+  }
+  .frame {
+    border-width: 2px;
   }
 }
 </style>

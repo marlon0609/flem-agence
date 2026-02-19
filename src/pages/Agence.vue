@@ -168,6 +168,9 @@ onBeforeUnmount(() => {
     .results {
         padding: 90px 0;
     }
+    .results h2 br {
+        display: none;
+    }
 
     .stats {
         grid-template-columns: 1fr;
