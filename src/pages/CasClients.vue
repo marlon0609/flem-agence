@@ -81,8 +81,8 @@ const serviceCases = [
         text: "Croissance d'audience et conversion via contenus et campagnes ciblées.",
       },
       {
-        href: "/logos/case-cia-logo.jpg",
-        img: "/logos/case-cia-logo.jpg",
+        href: "/images/lfdt-philippe-fabignon-cover.jpg",
+        img: "/images/lfdt-philippe-fabignon-cover.jpg",
         alt: "Funerailles des tabous",
         title: "Funerailles des tabous",
         text: "Structuration de la stratégie de diffusion et montée en visibilité.",
@@ -220,8 +220,27 @@ const displayServiceCases = caseDisplayOrder
 
 const productionVideos = [
   // Ajoute tes liens YouTube ici
-  { title: "Dr Kayi DOGBE : Le choc de la vérité sur la jeunesse et l’avenir de l’Afrique !", url: "https://youtu.be/d6rUqK3Y-D0?si=9Kl3vkr2m1f4AnrZ" },
+  { title: "Ces SOFT SKILLS que les recruteurs s'arrachent | Nabou Fall", url: "https://youtu.be/ty4vqn7_itk?si=DGUvNfSv0jNVgrf_" },
   { title: "Le succès rapide : imposture ou vraie réussite ?", url: "https://youtu.be/c5SCOhKNby4?si=JfkEvfVOwZDGSKuc" },
+];
+
+const podcast = [
+  // Ajoute ton lien de podcast YouTube ici
+  { title: "Dr Kayi DOGBE : Le choc de la vérité sur la jeunesse et l’avenir de l’Afrique !", url: "https://youtu.be/d6rUqK3Y-D0?si=9Kl3vkr2m1f4AnrZ" },
+  { title: "De MÉCANICIEN à grand JOURNALISTE africain | le DESTIN Hors Norme de Louis Magloire KEUMAYOU", url: "https://youtu.be/tY1Qrj4BCEc?si=qNBifPrESYd3Ah8M" },
+];
+
+const eventVideos = [
+  {
+    title: "Vidéo événementielle 01",
+    src: "",
+    poster: "/images/image-agence.png",
+  },
+  {
+    title: "Vidéo événementielle 02",
+    src: "",
+    poster: "/images/team-flem-agence.jpg",
+  },
 ];
 
 function toYouTubeEmbed(url) {
@@ -262,6 +281,13 @@ const videoCases = productionVideos
 let revealObserver;
 let statsObserver;
 const railCleanups = [];
+
+const podcastEmbed = podcast
+  .map((video) => ({
+    ...video,
+    embedUrl: toYouTubeEmbed(video.url),
+  }))
+  .filter((video) => video.embedUrl);
 
 function initRails() {
   const rails = [...document.querySelectorAll(".cas-portfolio [data-rail]")];
@@ -446,7 +472,7 @@ onBeforeUnmount(() => {
       </div>
     </section>
 
-    <section id="services" class="service-jump">
+    <!-- <section id="services" class="service-jump">
       <div class="container jump-pills">
         <a href="#technology">Technologie</a>
         <a href="#growth">Marketing de croissance</a>
@@ -454,7 +480,7 @@ onBeforeUnmount(() => {
         <a href="#creative">Studio créatif</a>
         <a href="#production-video">Production vidéo</a>
       </div>
-    </section>
+    </section> -->
 
     <section
       v-for="service in displayServiceCases"
@@ -512,7 +538,7 @@ onBeforeUnmount(() => {
     <section id="production-video" class="section production-video">
       <div class="container">
         <p class="kicker">05</p>
-        <h2>Production Vidéo</h2>
+        <h2>Capsules Vidéo</h2>
         <p class="lead">
           Nous avons créé des vidéo de production pour des marques de toutes tailles et des types de produits.
         </p>
@@ -537,6 +563,57 @@ onBeforeUnmount(() => {
             Aucune vidéo ajoutée pour le moment. Ajoute tes liens dans la variable
             <code>productionVideos</code> du fichier <code>CasClients.vue</code>.
           </p>
+        </div>
+      </div>
+
+      <br>
+      <div class="agency-separator" aria-hidden="true"></div>
+      <div class="container">
+        <p class="kicker">06</p>
+        <h2>Production Podcast</h2>
+        <p class="lead">
+          Nous produisons des podcasts Youtube de marque, de la conception à la diffusion, en passant par l'enregistrement, le montage et l'optimisation SEO.
+        </p>
+
+        <div v-if="podcastEmbed.length" class="video-grid">
+          <article v-for="podcast in podcastEmbed" :key="podcast.url" class="video-card reveal">
+            <div class="video-frame">
+              <iframe
+                :src="podcast.embedUrl"
+                :title="podcast.title || 'Podcast L\'investisseur africain - Flem Agence'"
+                loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+              ></iframe>
+            </div>
+            <h3>{{ podcast.title || "L'investisseur africain" }}</h3>
+          </article>
+        </div>
+      </div>
+
+      <br>
+      <div class="agency-separator" aria-hidden="true"></div>
+      <div class="container">
+        <p class="kicker">07</p>
+        <h2>Vidéo Evénementiel</h2>
+        <p class="lead">
+          Captation et montage de vos événements professionnels, conférences, lancements et temps forts de marque.
+        </p>
+
+        <div class="video-grid">
+          <article v-for="video in eventVideos" :key="video.title" class="video-card reveal">
+            <div class="video-frame">
+              <video controls preload="metadata" playsinline :poster="video.poster">
+                <source v-if="video.src" :src="video.src" type="video/mp4" />
+                Votre navigateur ne supporte pas la lecture vidéo.
+              </video>
+            </div>
+            <h3>{{ video.title }}</h3>
+            <p v-if="!video.src" class="video-tip">
+              Ajoute ton fichier vidéo dans <code>eventVideos</code> (champ <code>src</code>) dans
+              <code>CasClients.vue</code>.
+            </p>
+          </article>
         </div>
       </div>
     </section>
@@ -1228,11 +1305,26 @@ h1 {
   display: block;
 }
 
+.video-frame video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  background: #000;
+}
+
 .video-card h3 {
   margin: 12px 14px 14px;
   font-size: 16px;
   line-height: 1.35;
   color: rgba(255, 255, 255, 0.9);
+}
+
+.video-tip {
+  margin: 0 14px 14px;
+  font-size: 12px;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.68);
 }
 
 .video-empty {
