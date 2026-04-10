@@ -12,7 +12,7 @@ const router = createRouter({
     { path: "/", name: "home", component: Home },
     { path: "/services", name: "services", component: Services },
     { path: "/contact", name: "contact", component: Contact },
-    { path: "/cas-clients", name: "cas-clients", component: CasClients },
+    { path: "/portfolio", name: "portfolio", component: CasClients },
     { path: "/studio", name: "studio", component: Studio },
     { path: "/agence", name: "agence", component: Agence },
     // on ajoutera les autres pages ensuite

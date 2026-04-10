@@ -40,7 +40,7 @@ onMounted(() => {
         <a href="#capabilities" class="hero-cta">Découvrir nos services</a>
       </div>
       <div class="hero-visual">
-        <img src="/images/team-flem-agence.jpg" alt="Flem Agence" />
+        <img src="/images/image-agence.png" alt="Flem Agence" />
       </div>
     </section>
 
@@ -132,7 +132,7 @@ onMounted(() => {
           <a href="/contact" class="hero-cta alt">Entrer en contact</a>
         </div>
         <div class="closing-visual">
-          <img src="/images/team-flem-agence.jpg" alt="Équipe Flem en production" />
+          <img src="/images/image-agence.png" alt="Équipe Flem en production" />
         </div>
       </div>
     </section>

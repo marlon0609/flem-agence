@@ -110,6 +110,53 @@ const wallTiles = computed(() =>
   })),
 );
 
+const studioReviews = [
+  {
+    name: "Nabou Fall",
+    role: "Nabou Fall Akademy",
+    photo: "/images/nabou-fall-akademy-cover.png",
+    quote:
+      "Le niveau d'accompagnement est excellent. Le rendu final est premium et toujours livré dans les délais.",
+  },
+  {
+    name: "Esther Boua",
+    role: "Esther Boua Consulting",
+    photo: "/images/esther-boua-consulting-cover.png",
+    quote:
+      "L'équipe comprend vite les besoins et propose un cadre de tournage très professionnel. Je recommande sans hésiter.",
+  },
+  {
+    name: "Philippe Fabignon",
+    role: "LFDT",
+    photo: "/images/lfdt-philippe-fabignon-cover.jpg",
+    quote:
+      "Le studio est propre, modulable et l'ambiance met à l'aise. On gagne du temps sur chaque production.",
+  },
+  {
+    name: "Investisseur Africain",
+    role: "Podcast Business",
+    photo: "/images/investisseur-africain-cover.png",
+    quote:
+      "Très belle qualité image et son. Le workflow de livraison est clair et efficace pour nos équipes.",
+  },
+  {
+    name: "Business & Réussites",
+    role: "Média Digital",
+    photo: "/images/business-&-reussite-chimene-nana-cover.jpg",
+    quote:
+      "Une équipe réactive, des conseils utiles et un vrai souci du détail du tournage jusqu'à la post-production.",
+  },
+  {
+    name: "Immopreneurs",
+    role: "Selly Doridot",
+    photo: "/images/selly-doridot-immopreneurs-cover.jpg",
+    quote:
+      "Notre contenu passe un cap grâce au studio Flem. L'expérience client est fluide du brief à la diffusion.",
+  },
+];
+
+const studioReviewsReverse = [...studioReviews].reverse();
+
 onMounted(() => {
   const tl = gsap.timeline({ defaults: { ease: "power3.out", duration: 0.8 } });
   tl.from([".hero-content .hero-chip", ".hero-content h1", ".hero-content p", ".hero-content .hero-cta"], {
@@ -135,6 +182,15 @@ onMounted(() => {
     ease: "power3.out",
     stagger: 0.12,
     delay: 0.45,
+  });
+
+  gsap.from(".reviews-head, .reviews-marquee", {
+    opacity: 0,
+    y: 24,
+    duration: 0.8,
+    ease: "power3.out",
+    stagger: 0.12,
+    delay: 0.25,
   });
 
   featureTimer = window.setInterval(() => {
@@ -249,7 +305,7 @@ const goNextFeature = () => {
             </div>
             <div class="bubble-text">
               <h3>+ 1500 vidéos enregistrées</h3>
-              <a href="#clients" class="bubble-link">Lire les avis de nos clients →</a>
+              <a href="#avis-clients" class="bubble-link">Lire les avis de nos clients →</a>
             </div>
           </div>
         </div>
@@ -548,6 +604,55 @@ const goNextFeature = () => {
         >
           Réserver une session
         </a>
+      </div>
+    </section>
+
+    <!-- AVIS CLIENTS -->
+    <section id="avis-clients" class="studio-reviews" aria-label="Avis Clients">
+      <div class="container reviews-head">
+        <span class="badge subtle">Avis Clients</span>
+        <h2>Ils aiment Flem Studio</h2>
+        <p>Des retours authentiques de clients qui ont enregistré leurs contenus avec nous.</p>
+      </div>
+
+      <div class="reviews-marquee">
+        <div class="reviews-track">
+          <article
+            v-for="(review, index) in [...studioReviews, ...studioReviews]"
+            :key="`r1-${review.name}-${index}`"
+            class="review-card"
+          >
+            <div class="review-top">
+              <img :src="review.photo" :alt="review.name" />
+              <div>
+                <h3>{{ review.name }}</h3>
+                <p>{{ review.role }}</p>
+              </div>
+            </div>
+            <div class="review-stars" aria-label="5 étoiles">★★★★★</div>
+            <blockquote>{{ review.quote }}</blockquote>
+          </article>
+        </div>
+      </div>
+
+      <div class="reviews-marquee reverse">
+        <div class="reviews-track">
+          <article
+            v-for="(review, index) in [...studioReviewsReverse, ...studioReviewsReverse]"
+            :key="`r2-${review.name}-${index}`"
+            class="review-card"
+          >
+            <div class="review-top">
+              <img :src="review.photo" :alt="review.name" />
+              <div>
+                <h3>{{ review.name }}</h3>
+                <p>{{ review.role }}</p>
+              </div>
+            </div>
+            <div class="review-stars" aria-label="5 étoiles">★★★★★</div>
+            <blockquote>{{ review.quote }}</blockquote>
+          </article>
+        </div>
       </div>
     </section>
 
@@ -1400,6 +1505,117 @@ const goNextFeature = () => {
   box-shadow: 0 20px 44px rgba(214,176,122,.42);
 }
 
+.studio-reviews {
+  position: relative;
+  margin: 0 0 110px;
+  padding: 20px 0 10px;
+  overflow: hidden;
+}
+
+.reviews-head {
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto 30px;
+}
+
+.reviews-head h2 {
+  margin: 10px 0 8px;
+  font-size: clamp(30px, 4vw, 44px);
+  letter-spacing: -0.03em;
+}
+
+.reviews-head p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.reviews-marquee {
+  position: relative;
+  overflow: hidden;
+  mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+  margin-bottom: 14px;
+}
+
+.reviews-track {
+  display: flex;
+  align-items: stretch;
+  gap: 16px;
+  width: max-content;
+  animation: reviews-scroll 42s linear infinite;
+  will-change: transform;
+}
+
+.reviews-marquee.reverse .reviews-track {
+  animation-duration: 48s;
+  animation-direction: reverse;
+}
+
+.reviews-marquee:hover .reviews-track {
+  animation-play-state: paused;
+}
+
+.review-card {
+  width: clamp(270px, 30vw, 360px);
+  min-height: 200px;
+  padding: 16px;
+  border-radius: 18px;
+  background: linear-gradient(170deg, rgba(24,24,28,.92), rgba(9,9,11,.92));
+  border: 1px solid rgba(255,255,255,.09);
+  box-shadow: 0 18px 44px rgba(0,0,0,.35);
+  display: grid;
+  gap: 10px;
+}
+
+.review-top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.review-top img {
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  object-fit: cover;
+  border: 2px solid rgba(227,167,78,.7);
+}
+
+.review-top h3 {
+  margin: 0;
+  font-size: 15px;
+}
+
+.review-top p {
+  margin: 2px 0 0;
+  font-size: 12px;
+  color: rgba(255,255,255,.64);
+}
+
+.review-stars {
+  color: #f2bc63;
+  letter-spacing: .2em;
+  font-size: 12px;
+  text-shadow: 0 0 18px rgba(227,167,78,.25);
+}
+
+.review-card blockquote {
+  margin: 0;
+  color: rgba(255,255,255,.84);
+  line-height: 1.6;
+  font-size: 14px;
+}
+
+@keyframes reviews-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
 .program-steps {
   padding: 60px 0 120px;
 }
@@ -1567,6 +1783,9 @@ const goNextFeature = () => {
   .variant-md { grid-column: span 2; grid-row: span 2; }
   .pricing-grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+  .review-card {
+    width: clamp(250px, 56vw, 320px);
   }
 }
 
@@ -1737,6 +1956,40 @@ const goNextFeature = () => {
     grid-column: span 2;
     grid-row: span 2;
   }
+
+  .studio-reviews {
+    margin: 0 0 80px;
+  }
+  .reviews-head {
+    margin-bottom: 22px;
+    padding: 0 14px;
+  }
+  .reviews-head h2 {
+    font-size: clamp(24px, 8vw, 34px);
+  }
+  .reviews-marquee {
+    mask-image: linear-gradient(to right, transparent, black 4%, black 96%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 4%, black 96%, transparent);
+  }
+  .reviews-track {
+    gap: 12px;
+    animation-duration: 34s;
+  }
+  .reviews-marquee.reverse .reviews-track {
+    animation-duration: 38s;
+  }
+  .review-card {
+    width: 82vw;
+    min-height: 186px;
+    padding: 14px;
+    border-radius: 14px;
+  }
+  .review-top h3 {
+    font-size: 14px;
+  }
+  .review-card blockquote {
+    font-size: 13px;
+  }
 }
 
 @media (max-width: 420px) {
@@ -1763,6 +2016,15 @@ const goNextFeature = () => {
   }
   .wall-intro h2 {
     font-size: clamp(28px, 11vw, 40px);
+  }
+  .reviews-track {
+    animation-duration: 30s;
+  }
+  .reviews-marquee.reverse .reviews-track {
+    animation-duration: 34s;
+  }
+  .review-card {
+    width: 88vw;
   }
 }
 

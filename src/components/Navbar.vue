@@ -104,7 +104,7 @@ const labels = {
       { to: "/", label: "Accueil" },
       { to: "/agence", label: "Agence" },
       { to: "/services", label: "Services" },
-      { to: "/cas-clients", label: "Cas Clients" },
+      { to: "/portfolio", label: "Portfolio" },
       // { to: "/process", label: "Méthode" },
       { to: "/studio", label: "Studio" },
       { to: "/contact", label: "Contact" },
@@ -116,8 +116,8 @@ const labels = {
       { to: "/", label: "Home" },
       { to: "/agence", label: "Agency" },
       { to: "/services", label: "Services" },
-      // { to: "/cas-clients", label: "Case Studies" },
-      { to: "/process", label: "Method" },
+      { to: "/portfolio", label: "Portfolio" },
+      // { to: "/process", label: "Method" },
       { to: "/studio", label: "Studio" },
       { to: "/contact", label: "Contact" },
     ],
@@ -199,13 +199,27 @@ onMounted(() => {
   gap: 10px;
 }
 
+.logo {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  line-height: 0;
+}
+
 .logo img {
-  height: 28px;
+  height: 32px;
+  width: auto;
+  object-fit: contain;
   display: block;
   background: transparent;
   border-radius: 0;
   box-shadow: none;
-  clip-path: inset(4% round 4px);
+  clip-path: inset(7% 4% 9% 4% round 2px);
+  filter: brightness(1.08) contrast(1.12) saturate(1.04);
+}
+
+.logo::after {
+  content: none;
 }
 
 .glass-menu {
@@ -362,6 +376,10 @@ onMounted(() => {
 }
 
 @media (max-width: 1050px) {
+  .logo img {
+    height: 30px;
+  }
+
   .glass-menu {
     display: none;
   }

@@ -24,7 +24,7 @@
   min-height: 98vh;
   display: flex;
   align-items: center;
-  background: url("/images/team-flem-agence.jpg") center / cover no-repeat;
+  background: url("/images/image-agence.png") center / cover no-repeat;
   margin-top: 20px;
   overflow: hidden;
 }
