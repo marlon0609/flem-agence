@@ -1,5 +1,5 @@
 ﻿<script setup>
-import { onBeforeUnmount, onMounted } from "vue";
+import { onBeforeUnmount, onMounted, ref } from "vue";
 
 const serviceCases = [
   {
@@ -22,84 +22,110 @@ const serviceCases = [
       {
         href: "/images/casclients/technologie/acl-site-web.png",
         img: "/images/casclients/technologie/acl-site-web.png",
-        alt: "Site ACL",
-        title: "Site ACL",
+        alt: "Site Web - Africa Consulting Leaders",
+        title: "Site Web - Africa Consulting Leaders",
         text: "Conception et structuration d'une présence digitale claire et crédible.",
-      },
-      {
-        href: "/images/casclients/technologie/flem-site-web.png",
-        img: "/images/casclients/technologie/flem-site-web.png",
-        alt: "Site FLEM",
-        title: "Site FLEM",
-        text: "Site institutionnel orienté identité de marque et conversion.",
+        siteUrl: "https://africaconsultingleaders.com/",
       },
       {
         href: "/images/casclients/technologie/businessetreussite-site-web.png",
         img: "/images/casclients/technologie/businessetreussite-site-web.png",
-        alt: "Site Business et réussite",
-        title: "Site Business et réussite",
+        alt: "Site Web - Business et réussite",
+        title: "Site Web - Business et réussite",
         text: "Plateforme média pensée pour la visibilité, l'autorité et la performance.",
+        siteUrl: "https://businessetreussites.com/",
       },
       {
         href: "/images/casclients/technologie/nougna-site-web.png",
         img: "/images/casclients/technologie/nougna-site-web.png",
-        alt: "Site et application Nougna",
-        title: "Site & Application Nougna",
+        alt: "Site Web - Nougna",
+        title: "Site Web - Nougna",
         text: "Expérience digitale complète, du web à l'interface produit.",
+        siteUrl: "https://nougna.com/",
+      },
+      {
+        href: "/images/casclients/technologie/riadlyla-site-web.png",
+        img: "/images/casclients/technologie/riadlyla-site-web.png",
+        alt: "Site Web - Riad Lyla",
+        title: "Site Web - Riad Lyla",
+        text: "Site personnel avec intégration de contenus et optimisation SEO.",
+        siteUrl: "https://riadlyla.com/",
+      },
+      {
+        href: "/images/casclients/technologie/flem-site-web.png",
+        img: "/images/casclients/technologie/flem-site-web.png",
+        alt: "Site Web - FLEM Agence",
+        title: "Site Web - FLEM Agence",
+        text: "Site institutionnel orienté identité de marque et conversion.",
+        siteUrl: "https://flemagence.com/",
       },
     ],
   },
   {
     id: "growth",
     index: "02",
-    title: "Marketing de croissance",
+    title: "YouTube",
     bandClass: "is-dark",
     description:
-      "Nos équipes marketing pilotent des stratégies guidées par la donnée pour accélérer votre croissance : acquisition, contenus, publicité payante et optimisation continue.",
+      "Nous propulsons votre croissance sur YouTube grâce à des stratégies de contenu ciblées, une optimisation SEO rigoureuse et une gestion de communauté engagée.",
     deliverables: [
-      "Stratégie d'acquisition multi-canal",
-      "Gestion de campagnes publicitaires sociales et sur moteurs de recherche",
-      "Calendrier éditorial et production de contenus performance",
+      "Audit de chaîne et recommandations stratégiques",
+      "Conception de formats vidéo adaptés à votre audience",
+      "Calendrier éditorial et production de contenus à haute performance",
       "Gestion de communauté orientée résultats",
       "Rapports hebdomadaires KPI et recommandations",
     ],
-    ctaLabel: "Voir l'offre Marketing de croissance",
+    ctaLabel: "Voir l'offre YouTube",
     ctaHref: "https://flemagence.com/services",
     slides: [
       {
-        href: "/images/esther-boua-consulting-cover.png",
-        img: "/images/esther-boua-consulting-cover.png",
+        href: "/images/casclients/youtube/youtube-estherboua.png",
+        img: "/images/casclients/youtube/youtube-estherboua.png",
         alt: "Esther Boua",
         title: "Esther Boua",
         text: "Activation éditoriale et acquisition qualifiée orientées résultats.",
       },
       {
-        href: "/images/selly-doridot-immopreneurs-cover.jpg",
-        img: "/images/selly-doridot-immopreneurs-cover.jpg",
-        alt: "Immopreneur",
-        title: "Immopreneur",
+        href: "/images/casclients/youtube/youtube-immopreneurs.png",
+        img: "/images/casclients/youtube/youtube-immopreneurs.png",
+        alt: "Immopreneurs",
+        title: "Immopreneurs",
         text: "Croissance d'audience et conversion via contenus et campagnes ciblées.",
       },
       {
-        href: "/images/lfdt-philippe-fabignon-cover.jpg",
-        img: "/images/lfdt-philippe-fabignon-cover.jpg",
-        alt: "Funerailles des tabous",
-        title: "Funerailles des tabous",
-        text: "Structuration de la stratégie de diffusion et montée en visibilité.",
-      },
-      {
-        href: "/images/investisseur-africain-cover.png",
-        img: "/images/investisseur-africain-cover.png",
-        alt: "L’investisseur africain",
-        title: "L’investisseur africain",
+        href: "/images/casclients/youtube/youtube-investisseurafricain.png",
+        img: "/images/casclients/youtube/youtube-investisseurafricain.png",
+        alt: "Investisseur Africain",
+        title: "Investisseur Africain",
         text: "Pilotage de la croissance avec suivi KPI, tests et optimisation continue.",
       },
       {
-        href: "/images/nabou-fall-akademy-cover.png",
-        img: "/images/nabou-fall-akademy-cover.png",
+        href: "/images/casclients/youtube/youtube-lfdt.png",
+        img: "/images/casclients/youtube/youtube-lfdt.png",
+        alt: "Funérailles des tabous",
+        title: "Funérailles des tabous",
+        text: "Structuration de la stratégie de diffusion et montée en visibilité.",
+      },
+      {
+        href: "/images/casclients/youtube/youtube-marcellin.png",
+        img: "/images/casclients/youtube/youtube-marcellin.png",
+        alt: "Marcellin",
+        title: "Marcellin",
+        text: "Formats conversationnels et narration pensée pour maximiser la rétention.",
+      },
+      {
+        href: "/images/casclients/youtube/youtube-naboufall.png",
+        img: "/images/casclients/youtube/youtube-naboufall.png",
         alt: "Nabou Fall",
         title: "Nabou Fall",
         text: "Positionnement digital et amplification des contenus à fort impact.",
+      },
+      {
+        href: "/images/casclients/youtube/youtube-yazidehitou.png",
+        img: "/images/casclients/youtube/youtube-yazidehitou.png",
+        alt: "Yazid Ehitou",
+        title: "Yazid Ehitou",
+        text: "Optimisation éditoriale continue pour accélérer la croissance de chaîne.",
       },
     ],
   },
@@ -231,19 +257,13 @@ const podcast = [
 ];
 
 const eventVideos = [
-  {
-    title: "Vidéo événementielle 01",
-    src: "",
-    poster: "/images/image-agence.png",
-  },
-  {
-    title: "Vidéo événementielle 02",
-    src: "",
-    poster: "/images/team-flem-agence.jpg",
-  },
+  // Ajoute tes liens YouTube événementiels ici
+  { title: "REBRAND YOUR LEADERSHIP By SENAKPON GROUP | Flem Agence", url: "https://youtu.be/fnj9_xNQrM4" },
+  { title: "BÉNIN 🇧🇯 | Leadership féminin OWLA", url: "https://youtu.be/HBtjwFxpy20" },
+  { title: "Vidéo événementielle Flem Agence", url: "https://youtu.be/neSJ3y8mVSg" },
 ];
 
-function toYouTubeEmbed(url) {
+function toYouTubeId(url) {
   if (!url) return "";
 
   try {
@@ -265,16 +285,71 @@ function toYouTubeEmbed(url) {
       }
     }
 
-    return id ? `https://www.youtube.com/embed/${id}?rel=0` : "";
+    return id || "";
   } catch {
     return "";
+  }
+}
+
+function toYouTubeEmbed(url) {
+  const id = toYouTubeId(url);
+  return id ? `https://www.youtube.com/embed/${id}?rel=0` : "";
+}
+
+function toYouTubeThumb(url) {
+  const id = toYouTubeId(url);
+  return id ? `https://i.ytimg.com/vi/${id}/mqdefault.jpg` : "";
+}
+
+function toYouTubeThumbFallback(url) {
+  const id = toYouTubeId(url);
+  return id ? `https://i.ytimg.com/vi/${id}/hqdefault.jpg` : "";
+}
+
+function onThumbLoad(event) {
+  const image = event?.target;
+  if (!(image instanceof HTMLImageElement)) return;
+
+  const fallback = image.dataset.fallback || "";
+
+  // Certaines miniatures YouTube renvoient une petite image placeholder.
+  // On bascule alors automatiquement sur le fallback.
+  if (
+    fallback &&
+    image.naturalWidth > 0 &&
+    image.naturalHeight > 0 &&
+    image.naturalWidth <= 160 &&
+    image.naturalHeight <= 120 &&
+    image.src !== fallback
+  ) {
+    image.src = fallback;
+  }
+}
+
+function onThumbError(event) {
+  const image = event?.target;
+  if (!(image instanceof HTMLImageElement)) return;
+
+  const fallback = image.dataset.fallback || "";
+  const localFallback = "/images/team-flem-agence.jpg";
+
+  if (fallback && image.src !== fallback) {
+    image.src = fallback;
+    return;
+  }
+
+  if (!image.src.endsWith(localFallback)) {
+    image.src = localFallback;
   }
 }
 
 const videoCases = productionVideos
   .map((video) => ({
     ...video,
+    videoId: toYouTubeId(video.url),
     embedUrl: toYouTubeEmbed(video.url),
+    thumbUrl: toYouTubeThumb(video.url),
+    thumbFallback: toYouTubeThumbFallback(video.url),
   }))
   .filter((video) => video.embedUrl);
 
@@ -285,9 +360,83 @@ const railCleanups = [];
 const podcastEmbed = podcast
   .map((video) => ({
     ...video,
+    videoId: toYouTubeId(video.url),
     embedUrl: toYouTubeEmbed(video.url),
+    thumbUrl: toYouTubeThumb(video.url),
+    thumbFallback: toYouTubeThumbFallback(video.url),
   }))
   .filter((video) => video.embedUrl);
+
+const eventEmbed = eventVideos
+  .map((video) => ({
+    ...video,
+    videoId: toYouTubeId(video.url),
+    embedUrl: toYouTubeEmbed(video.url),
+    thumbUrl: toYouTubeThumb(video.url),
+    thumbFallback: toYouTubeThumbFallback(video.url),
+  }))
+  .filter((video) => video.embedUrl);
+
+const activeVideo = ref(null);
+const activeVideoSrc = ref("");
+const activeVideoPreviewSrc = ref("");
+const activeVideoPreviewFallback = ref("");
+const activeImage = ref(null);
+
+function withPlayerParams(embedUrl) {
+  if (!embedUrl) return "";
+  const separator = embedUrl.includes("?") ? "&" : "?";
+  return `${embedUrl}${separator}playsinline=1&modestbranding=1&rel=0`;
+}
+
+function withAutoplay(embedUrl) {
+  if (!embedUrl) return "";
+  const separator = embedUrl.includes("?") ? "&" : "?";
+  return `${embedUrl}${separator}autoplay=1`;
+}
+
+function openVideo(video) {
+  if (!video?.embedUrl) return;
+  activeVideo.value = video;
+  activeVideoSrc.value = "";
+  activeVideoPreviewSrc.value = video.thumbUrl || "";
+  activeVideoPreviewFallback.value = video.thumbFallback || "/images/team-flem-agence.jpg";
+  document.body.style.overflow = "hidden";
+}
+
+function playActiveVideo() {
+  if (!activeVideo.value?.embedUrl) return;
+  activeVideoSrc.value = withAutoplay(withPlayerParams(activeVideo.value.embedUrl));
+}
+
+function onLightboxPreviewError(event) {
+  const image = event?.target;
+  if (!(image instanceof HTMLImageElement)) return;
+  const fallback = activeVideoPreviewFallback.value || "/images/team-flem-agence.jpg";
+  if (image.src !== fallback) {
+    image.src = fallback;
+  }
+}
+
+function closeVideo() {
+  activeVideo.value = null;
+  activeVideoSrc.value = "";
+  activeVideoPreviewSrc.value = "";
+  activeVideoPreviewFallback.value = "";
+  document.body.style.overflow = "";
+}
+
+function openImage(slide) {
+  const src = slide?.img || slide?.href || "";
+  if (!src) return;
+  activeImage.value = { src, alt: slide?.alt || slide?.title || "Capture" };
+  document.body.style.overflow = "hidden";
+}
+
+function closeImage() {
+  activeImage.value = null;
+  document.body.style.overflow = "";
+}
 
 function initRails() {
   const rails = [...document.querySelectorAll(".cas-portfolio [data-rail]")];
@@ -428,6 +577,15 @@ function initCounters() {
 }
 
 onMounted(() => {
+  const onEsc = (event) => {
+    if (event.key === "Escape") {
+      if (activeVideo.value) closeVideo();
+      if (activeImage.value) closeImage();
+    }
+  };
+  window.addEventListener("keydown", onEsc);
+  railCleanups.push(() => window.removeEventListener("keydown", onEsc));
+
   initRails();
   initReveal();
   initCounters();
@@ -436,6 +594,7 @@ onMounted(() => {
 onBeforeUnmount(() => {
   if (revealObserver) revealObserver.disconnect();
   if (statsObserver) statsObserver.disconnect();
+  document.body.style.overflow = "";
   railCleanups.forEach((cleanup) => cleanup());
   railCleanups.length = 0;
 });
@@ -504,28 +663,45 @@ onBeforeUnmount(() => {
           <a class="text-link" :href="service.ctaHref" target="_blank" rel="noopener">{{ service.ctaLabel }}</a>
         </header>
 
-        <article class="service-rail reveal" data-rail>
-          <div class="rail-viewport">
-            <div class="rail-track">
-              <a
-                v-for="slide in service.slides"
-                :key="`${service.id}-${slide.title}`"
-                class="rail-slide"
-                :href="slide.href"
-                target="_blank"
-                rel="noopener"
-              >
-                <div class="rail-media">
-                  <img :src="slide.img" :alt="slide.alt" loading="lazy" />
-                </div>
-                <div class="rail-copy">
-                  <span class="capture-chip">Capture client</span>
-                  <h4>{{ slide.title }}</h4>
-                  <p>{{ slide.text }}</p>
-                </div>
-              </a>
+          <article class="service-rail reveal" data-rail>
+            <div class="rail-viewport">
+              <div class="rail-track">
+                <article
+                  v-for="slide in service.slides"
+                  :key="`${service.id}-${slide.title}`"
+                  class="rail-slide"
+                >
+                  <button
+                    class="rail-media-btn"
+                    type="button"
+                    @click="openImage(slide)"
+                    :aria-label="`Ouvrir la capture: ${slide.title}`"
+                  >
+                    <div class="rail-media">
+                      <img :src="slide.img" :alt="slide.alt" loading="lazy" />
+                    </div>
+                  </button>
+                  <div class="rail-copy">
+                    <span class="capture-chip">Capture client</span>
+                    <h4>{{ slide.title }}</h4>
+                    <p>{{ slide.text }}</p>
+                    <a
+                      v-if="service.id === 'technology' && slide.siteUrl"
+                      class="rail-site-link"
+                      :href="slide.siteUrl"
+                      target="_blank"
+                      rel="noopener"
+                      @click.stop
+                    >
+                      Accéder au Site <span aria-hidden="true">↗</span>
+                    </a>
+                    <span v-else class="rail-preview-note">
+                      {{ service.id === "growth" ? "Voir la chaîne ↗" : "Voir la capture ↗" }}
+                    </span>
+                  </div>
+                </article>
+              </div>
             </div>
-          </div>
           <div class="rail-controls">
             <button class="rail-btn" data-dir="-1" type="button" aria-label="Slide précédent">‹</button>
             <div class="rail-dots" aria-label="Pagination"></div>
@@ -538,24 +714,40 @@ onBeforeUnmount(() => {
     <section id="production-video" class="section production-video">
       <div class="container">
         <p class="kicker">05</p>
-        <h2>Capsules Vidéo</h2>
+        <h2>Capsules vidéos Youtube</h2>
         <p class="lead">
           Nous avons créé des vidéo de production pour des marques de toutes tailles et des types de produits.
         </p>
 
-        <div v-if="videoCases.length" class="video-grid">
-          <article v-for="video in videoCases" :key="video.url" class="video-card reveal">
-            <div class="video-frame">
-              <iframe
-                :src="video.embedUrl"
-                :title="video.title || 'Vidéo client Flem Agence'"
+        <div v-if="videoCases.length" class="video-strip reveal">
+          <div class="video-strip-track" :class="{ 'is-static': videoCases.length <= 1 }">
+            <button
+              v-for="(video, idx) in [...videoCases, ...videoCases]"
+              :key="`capsule-${video.url}-${idx}`"
+              class="video-thumb-card"
+              type="button"
+              @click="openVideo(video)"
+              :aria-hidden="idx >= videoCases.length ? 'true' : undefined"
+              :tabindex="idx >= videoCases.length ? -1 : undefined"
+              :aria-label="`Ouvrir la vidéo: ${video.title || 'Vidéo client'}`"
+            >
+              <img
+                :src="video.thumbUrl"
+                :data-fallback="video.thumbFallback"
+                :alt="video.title || 'Vidéo client Flem Agence'"
                 loading="lazy"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen
-              ></iframe>
-            </div>
-            <h3>{{ video.title || "Vidéo client" }}</h3>
-          </article>
+                @load="onThumbLoad"
+                @error="onThumbError"
+              />
+              <span class="video-overlay" aria-hidden="true"></span>
+              <span class="video-play" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M9 7.5 17 12l-8 4.5v-9Z" fill="currentColor" />
+                </svg>
+              </span>
+              <span class="video-title">{{ video.title || "Vidéo client" }}</span>
+            </button>
+          </div>
         </div>
 
         <div v-else class="video-empty reveal">
@@ -570,24 +762,50 @@ onBeforeUnmount(() => {
       <div class="agency-separator" aria-hidden="true"></div>
       <div class="container">
         <p class="kicker">06</p>
-        <h2>Production Podcast</h2>
+        <h2>Production Podcast & Talk-Shows</h2>
         <p class="lead">
           Nous produisons des podcasts Youtube de marque, de la conception à la diffusion, en passant par l'enregistrement, le montage et l'optimisation SEO.
         </p>
 
-        <div v-if="podcastEmbed.length" class="video-grid">
-          <article v-for="podcast in podcastEmbed" :key="podcast.url" class="video-card reveal">
-            <div class="video-frame">
-              <iframe
-                :src="podcast.embedUrl"
-                :title="podcast.title || 'Podcast L\'investisseur africain - Flem Agence'"
+        <div v-if="podcastEmbed.length" class="video-strip reveal">
+          <div
+            class="video-strip-track"
+            :class="{ 'is-static': podcastEmbed.length <= 1, 'is-reverse': podcastEmbed.length > 1 }"
+          >
+            <button
+              v-for="(podcast, idx) in [...podcastEmbed, ...podcastEmbed]"
+              :key="`podcast-${podcast.url}-${idx}`"
+              class="video-thumb-card"
+              type="button"
+              @click="openVideo(podcast)"
+              :aria-hidden="idx >= podcastEmbed.length ? 'true' : undefined"
+              :tabindex="idx >= podcastEmbed.length ? -1 : undefined"
+              :aria-label="`Ouvrir le podcast: ${podcast.title || 'Podcast Flem Agence'}`"
+            >
+              <img
+                :src="podcast.thumbUrl"
+                :data-fallback="podcast.thumbFallback"
+                :alt="podcast.title || 'Podcast Flem Agence'"
                 loading="lazy"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen
-              ></iframe>
-            </div>
-            <h3>{{ podcast.title || "L'investisseur africain" }}</h3>
-          </article>
+                @load="onThumbLoad"
+                @error="onThumbError"
+              />
+              <span class="video-overlay" aria-hidden="true"></span>
+              <span class="video-play" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M9 7.5 17 12l-8 4.5v-9Z" fill="currentColor" />
+                </svg>
+              </span>
+              <span class="video-title">{{ podcast.title || "Podcast Flem Agence" }}</span>
+            </button>
+          </div>
+        </div>
+
+        <div v-else class="video-empty reveal">
+          <p>
+            Aucun podcast ajouté pour le moment. Ajoute tes liens dans la variable
+            <code>podcast</code> du fichier <code>CasClients.vue</code>.
+          </p>
         </div>
       </div>
 
@@ -595,28 +813,99 @@ onBeforeUnmount(() => {
       <div class="agency-separator" aria-hidden="true"></div>
       <div class="container">
         <p class="kicker">07</p>
-        <h2>Vidéo Evénementiel</h2>
+        <h2>Aftermovies & Vidéos Événementielles</h2>
         <p class="lead">
           Captation et montage de vos événements professionnels, conférences, lancements et temps forts de marque.
         </p>
 
-        <div class="video-grid">
-          <article v-for="video in eventVideos" :key="video.title" class="video-card reveal">
-            <div class="video-frame">
-              <video controls preload="metadata" playsinline :poster="video.poster">
-                <source v-if="video.src" :src="video.src" type="video/mp4" />
-                Votre navigateur ne supporte pas la lecture vidéo.
-              </video>
-            </div>
-            <h3>{{ video.title }}</h3>
-            <p v-if="!video.src" class="video-tip">
-              Ajoute ton fichier vidéo dans <code>eventVideos</code> (champ <code>src</code>) dans
-              <code>CasClients.vue</code>.
-            </p>
-          </article>
+        <div v-if="eventEmbed.length" class="video-strip reveal">
+          <div class="video-strip-track" :class="{ 'is-static': eventEmbed.length <= 1 }">
+            <button
+              v-for="(video, idx) in [...eventEmbed, ...eventEmbed]"
+              :key="`event-${video.url}-${idx}`"
+              class="video-thumb-card"
+              type="button"
+              @click="openVideo(video)"
+              :aria-hidden="idx >= eventEmbed.length ? 'true' : undefined"
+              :tabindex="idx >= eventEmbed.length ? -1 : undefined"
+              :aria-label="`Ouvrir la vidéo événementielle: ${video.title || 'Vidéo événementielle'}`"
+            >
+              <img
+                :src="video.thumbUrl"
+                :data-fallback="video.thumbFallback"
+                :alt="video.title || 'Vidéo événementielle Flem Agence'"
+                loading="lazy"
+                @load="onThumbLoad"
+                @error="onThumbError"
+              />
+              <span class="video-overlay" aria-hidden="true"></span>
+              <span class="video-play" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M9 7.5 17 12l-8 4.5v-9Z" fill="currentColor" />
+                </svg>
+              </span>
+              <span class="video-title">{{ video.title || "Vidéo événementielle" }}</span>
+            </button>
+          </div>
+        </div>
+
+        <div v-else class="video-empty reveal">
+          <p>
+            Aucune vidéo événementielle ajoutée pour le moment. Ajoute tes liens dans la variable
+            <code>eventVideos</code> du fichier <code>CasClients.vue</code>.
+          </p>
         </div>
       </div>
     </section>
+
+    <Teleport to="body">
+      <div
+        v-if="activeVideo"
+        class="video-lightbox"
+        role="dialog"
+        aria-modal="true"
+        :aria-label="activeVideo.title || 'Lecteur vidéo YouTube'"
+        @click.self="closeVideo"
+      >
+        <button type="button" class="video-lightbox-close" aria-label="Fermer la vidéo" @click="closeVideo">
+          ×
+        </button>
+
+        <div class="video-lightbox-panel">
+          <button
+            v-if="!activeVideoSrc"
+            type="button"
+            class="video-lightbox-preview"
+            :aria-label="`Lancer la vidéo: ${activeVideo.title || 'Vidéo YouTube'}`"
+            @click="playActiveVideo"
+          >
+            <img
+              :src="activeVideoPreviewSrc"
+              :alt="activeVideo.title || 'Aperçu vidéo'"
+              loading="eager"
+              @error="onLightboxPreviewError"
+            />
+            <span class="video-lightbox-preview-overlay" aria-hidden="true"></span>
+            <span class="video-lightbox-preview-top">{{ activeVideo.title || "Vidéo YouTube" }}</span>
+            <span class="video-lightbox-preview-play" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M8.8 7.2 17.3 12l-8.5 4.8V7.2Z" fill="currentColor" />
+              </svg>
+            </span>
+            <span class="video-lightbox-preview-pill">Regarder sur YouTube</span>
+          </button>
+
+          <iframe
+            v-else
+            :src="activeVideoSrc"
+            :title="activeVideo.title || 'Lecteur vidéo YouTube'"
+            loading="eager"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </div>
+    </Teleport>
 
     <section id="impact" class="section results">
       <div class="container">
@@ -738,6 +1027,24 @@ onBeforeUnmount(() => {
         </article>
       </div>
     </section> -->
+
+    <!-- Image Lightbox -->
+    <Teleport to="body">
+      <div
+        v-if="activeImage"
+        class="image-lightbox"
+        role="dialog"
+        aria-modal="true"
+        @click.self="closeImage"
+      >
+        <button type="button" class="image-lightbox-close" aria-label="Fermer l'image" @click="closeImage">
+          ×
+        </button>
+        <div class="image-lightbox-panel">
+          <img :src="activeImage.src" :alt="activeImage.alt" />
+        </div>
+      </div>
+    </Teleport>
   </main>
 </template>
 
@@ -1125,7 +1432,18 @@ h1 {
   display: flex;
   flex-direction: column;
   color: inherit;
-  text-decoration: none;
+  background: transparent;
+  border: none;
+  padding: 0;
+}
+
+.rail-media-btn {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  width: 100%;
   cursor: zoom-in;
 }
 
@@ -1144,7 +1462,7 @@ h1 {
 }
 
 .rail-slide:hover img,
-.rail-slide:focus-visible img {
+.rail-media-btn:focus-visible img {
   transform: scale(1.04);
   filter: saturate(1.1) brightness(1.04);
 }
@@ -1179,7 +1497,7 @@ h1 {
 }
 
 .rail-slide:hover .capture-chip,
-.rail-slide:focus-visible .capture-chip {
+.rail-media-btn:focus-visible + .rail-copy .capture-chip {
   border-color: rgba(243, 201, 130, 0.5);
   background: rgba(243, 201, 130, 0.14);
 }
@@ -1191,19 +1509,88 @@ h1 {
   line-height: 1.62;
 }
 
-.rail-slide p::after {
-  content: "Voir la capture ↗";
-  display: block;
-  margin-top: 10px;
+.rail-site-link,
+.rail-preview-note {
+  margin: 0 18px 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  width: fit-content;
   font-size: 11px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: rgba(243, 201, 130, 0.92);
+  color: rgba(243, 201, 130, 0.95);
 }
 
-.rail-slide:focus-visible {
+.rail-site-link {
+  border-bottom: 1px solid rgba(243, 201, 130, 0.4);
+  transition: color 180ms ease, border-color 180ms ease, transform 180ms ease;
+}
+
+.rail-site-link:hover {
+  color: rgba(255, 226, 173, 0.98);
+  border-color: rgba(255, 226, 173, 0.78);
+  transform: translateX(2px);
+}
+
+.rail-media-btn:focus-visible {
   outline: 2px solid rgba(243, 201, 130, 0.55);
   outline-offset: -2px;
+}
+
+.image-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 2400;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  background: rgba(0, 0, 0, 0.88);
+  backdrop-filter: blur(2px);
+}
+
+.image-lightbox-panel {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  place-items: center;
+}
+
+.image-lightbox-panel img {
+  max-width: 96vw;
+  max-height: 96vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  background: #000;
+  border-radius: 6px;
+  box-shadow: 0 24px 100px rgba(0, 0, 0, 0.6);
+}
+
+.image-lightbox-close {
+  position: fixed;
+  top: 16px;
+  right: 18px;
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  background: rgba(10, 10, 12, 0.65);
+  color: #fff;
+  font-size: 27px;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 200ms ease, border-color 200ms ease;
+  z-index: 2401;
+}
+
+.image-lightbox-close:hover {
+  background: rgba(26, 26, 30, 0.9);
+  border-color: rgba(255, 255, 255, 0.46);
 }
 
 .rail-controls {
@@ -1278,53 +1665,288 @@ h1 {
   letter-spacing: -0.03em;
 }
 
-.video-grid {
+.video-strip {
   margin-top: 24px;
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 16px;
-}
-
-.video-card {
-  border-radius: var(--radius-xl);
-  border: 1px solid rgba(255, 255, 255, 0.09);
-  background: linear-gradient(180deg, rgba(15, 15, 18, 0.98), rgba(9, 9, 11, 0.99));
   overflow: hidden;
+  position: relative;
+  padding: 4px 0 8px;
 }
 
-.video-frame {
-  width: 100%;
+.video-strip-track {
+  display: flex;
+  align-items: stretch;
+  gap: 14px;
+  width: max-content;
+  min-width: 100%;
+  will-change: transform;
+  animation: video-marquee var(--marquee-duration, 30s) linear infinite;
+}
+
+.video-strip-track.is-static {
+  animation: none;
+}
+
+.video-strip-track.is-reverse {
+  animation-direction: reverse;
+}
+
+.video-thumb-card {
+  position: relative;
+  appearance: none;
+  padding: 0;
+  text-align: left;
+  cursor: pointer;
+  width: min(640px, 72vw);
+  min-width: min(640px, 72vw);
   aspect-ratio: 16 / 9;
-  background: #000;
+  overflow: hidden;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  background: #0b0b0d;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.3);
+  transition: transform 240ms ease, box-shadow 240ms ease, border-color 240ms ease;
 }
 
-.video-frame iframe {
+.video-thumb-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  display: block;
+  background: #0a0a0c;
+}
+
+.video-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(0, 0, 0, 0.08) 40%, rgba(0, 0, 0, 0.62) 100%);
+}
+
+.video-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: clamp(58px, 6.2vw, 90px);
+  height: clamp(58px, 6.2vw, 90px);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.95);
+  color: #ff3047;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.4);
+}
+
+.video-play svg {
+  width: 36%;
+  height: 36%;
+  margin-left: 3px;
+}
+
+.video-title {
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  bottom: 12px;
+  font-size: clamp(12px, 1.2vw, 15px);
+  line-height: 1.35;
+  color: rgba(255, 255, 255, 0.96);
+  font-weight: 500;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.65);
+}
+
+.video-thumb-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.45);
+}
+
+.video-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 6000;
+  display: grid;
+  place-items: center;
+  padding: clamp(8px, 2.6vw, 24px);
+  background: rgba(0, 0, 0, 0.94);
+  backdrop-filter: blur(2px);
+  isolation: isolate;
+}
+
+.video-lightbox-panel {
+  width: min(1360px, 94vw);
+  aspect-ratio: 16 / 9;
+  max-height: 90svh;
+  position: relative;
+  background: #000;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 30px 120px rgba(0, 0, 0, 0.7);
+}
+
+.video-lightbox-preview {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  background: #000;
+  color: #fff;
+  text-align: left;
+  cursor: pointer;
+}
+
+.video-lightbox-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  display: block;
+}
+
+.video-lightbox-preview-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(0, 0, 0, 0.5) 0%, transparent 28%),
+    linear-gradient(0deg, rgba(0, 0, 0, 0.55) 0%, transparent 28%);
+}
+
+.video-lightbox-preview-top {
+  position: absolute;
+  top: clamp(10px, 2.3vw, 18px);
+  left: clamp(12px, 2.4vw, 24px);
+  right: clamp(12px, 2.4vw, 24px);
+  font-size: clamp(12px, 1.5vw, 32px);
+  line-height: 1.25;
+  font-weight: 700;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+}
+
+.video-lightbox-preview-play {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: clamp(66px, 8.3vw, 118px);
+  height: clamp(46px, 5.9vw, 82px);
+  border-radius: 999px;
+  background: #ff253f;
+  color: #fff;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
+}
+
+.video-lightbox-preview-play svg {
+  width: 34%;
+  height: 34%;
+  margin-left: 2px;
+}
+
+.video-lightbox-preview-pill {
+  position: absolute;
+  right: clamp(12px, 2.4vw, 24px);
+  bottom: clamp(12px, 2.4vw, 20px);
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  height: clamp(34px, 4vw, 42px);
+  padding: 0 clamp(12px, 1.7vw, 18px);
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.34);
+  font-size: clamp(11px, 1.2vw, 16px);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  backdrop-filter: blur(3px);
+}
+
+.video-lightbox-preview-pill::before {
+  content: "";
+  width: 16px;
+  height: 12px;
+  border-radius: 3px;
+  background: #fff;
+  box-shadow: inset 3px 0 0 #111;
+}
+
+.video-lightbox-panel iframe {
   width: 100%;
   height: 100%;
   border: 0;
   display: block;
-}
-
-.video-frame video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
   background: #000;
 }
 
-.video-card h3 {
-  margin: 12px 14px 14px;
-  font-size: 16px;
-  line-height: 1.35;
-  color: rgba(255, 255, 255, 0.9);
+.video-lightbox-close {
+  position: fixed;
+  top: 16px;
+  right: 18px;
+  z-index: 6001;
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  background: rgba(10, 10, 12, 0.65);
+  color: #fff;
+  font-size: 27px;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 200ms ease, border-color 200ms ease;
 }
 
-.video-tip {
-  margin: 0 14px 14px;
-  font-size: 12px;
-  line-height: 1.5;
-  color: rgba(255, 255, 255, 0.68);
+.video-lightbox-close:hover {
+  background: rgba(26, 26, 30, 0.9);
+  border-color: rgba(255, 255, 255, 0.46);
+}
+
+@media (max-width: 760px) {
+  .video-lightbox {
+    padding: 8px;
+  }
+
+  .video-lightbox-panel {
+    width: 100%;
+    max-height: 82svh;
+    border-radius: 10px;
+  }
+
+  .video-lightbox-preview-top {
+    font-size: 13px;
+  }
+
+  .video-lightbox-preview-pill {
+    font-size: 11px;
+    height: 34px;
+  }
+
+  .video-lightbox-close {
+    top: 8px;
+    right: 8px;
+    width: 38px;
+    height: 38px;
+  }
+}
+
+@keyframes video-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-50% - 7px));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .video-strip-track {
+    animation: none;
+  }
 }
 
 .video-empty {
@@ -1639,8 +2261,13 @@ h1 {
     grid-template-columns: 1fr;
   }
 
-  .video-grid {
-    grid-template-columns: 1fr;
+  .video-thumb-card {
+    width: min(560px, 86vw);
+    min-width: min(560px, 86vw);
+  }
+
+  .video-strip-track {
+    --marquee-duration: 24s;
   }
 
   .agency-contact {

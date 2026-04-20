@@ -661,7 +661,7 @@ const goNextFeature = () => {
       <div class="container">
         <div class="offers-header">
           <span class="badge subtle">Venez au Studio Flem</span>
-          <h2>Prêt à te rendre à notre Studio ?</h2>
+          <h2>Prêt à venir au Studio ?</h2>
           <p>
             Flem studio se trouve à Bè Gbenyedzi, sur le blvd Houphouet Boigny en face de la pharmacie Biova, 
             <br> ou clinique Barruet… dans l’immeuble (orange) de Moov Akodessewa.
